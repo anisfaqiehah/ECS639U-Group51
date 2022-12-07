@@ -6,3 +6,4 @@ I have created the back end but for some reason the pages do not render in the b
 Before running in your computer install the following dependencies:
 
 pip install django-crispy-forms
+. auction/bin/activate 
