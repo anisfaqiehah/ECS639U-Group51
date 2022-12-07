@@ -1,7 +1,7 @@
 # ECS639U-Group51
 Group Coursework for ECS639U 
 
-I have createdthe backe nd but for some reason the pages do not render inthe browser
+I have created the back end but for some reason the pages do not render in the browser
 
 Before running in your computer install the following dependencies:
 
