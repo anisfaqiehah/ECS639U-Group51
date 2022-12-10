@@ -8,8 +8,9 @@ Before running in your computer install the following dependencies:
 ```
 pip install django-crispy-forms
 . auction/bin/activate 
-
 ```
 
-router
-``` yarn add -D vue-router@4 ```
+router installation
+``` 
+yarn add -D vue-router@4 
+```
