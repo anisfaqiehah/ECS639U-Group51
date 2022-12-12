@@ -14,3 +14,9 @@ router installation
 ``` 
 yarn add -D vue-router@4 
 ```
+
+
+Install Bootstrap
+```
+npm install vue bootstrap bootstrap-vue
+```
