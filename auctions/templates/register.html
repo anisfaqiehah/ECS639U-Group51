@@ -1,0 +1,16 @@
+
+{%block title%}Sign up {%endblock%}
+{% load crispy_forms_tags%}
+{%block content%}
+<form method="Post" class="form-group">
+      {% csrf_token %}
+      {{form|crispy}}
+      <button type="submit" class="btn btn-success">Register</button>
+</form>
+<div class='card shadow mx-auto text-center m-4 p-4 bg-light' style="width:375px;">
+      Already have an account? 
+      <a class="btn btn-outline-primary mt-3" href="{% url 'login' %}">
+          Log in
+      </a>
+  </div>
+{%endblock%}    
