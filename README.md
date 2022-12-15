@@ -1,15 +1,15 @@
 # ECS639U-Group51
 Group Coursework for ECS639U 
 
-######Group members
+###### Group members
 Esther Sanchez - Django (Backend) - Django and helped fetching API in frontend, Styling
 Agnes Faye Chee - Frontend(Vue/Vite) - Helped fetching API and creating methods in frontend, Styling, Deployment
 Anis Faqiehah binti Zainudin - Frontend(Vue/Vite) - Vue Routing, Styling, Creating views
 
-######URL 
-######the username and password for the admin page
+###### URL 
+###### the username and password for the admin page
 
-######the username and passwords of the 5 test users
+###### The username and passwords of the 5 test users
 
 
 
