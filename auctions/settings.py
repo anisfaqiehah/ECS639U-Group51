@@ -36,6 +36,7 @@ LOGOUT_REDIRECT_URL='frontpage'
 INSTALLED_APPS = [
     'auctions',
     'rest_framework',
+    'rest_framework.authtoken',
     'crispy_forms',
     'corsheaders',
     'django.contrib.admin',
@@ -158,3 +159,15 @@ LOGGING = {
 }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+"""""
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        'rest_framework.permissions.TokenAuthentication',
+    ]
+}
+"""""

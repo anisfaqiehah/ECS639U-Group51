@@ -3,16 +3,18 @@ from django.urls import path
 from django.contrib import admin
 from . import views
 from rest_framework.urlpatterns import format_suffix_patterns
+from rest_framework.authtoken.views import obtain_auth_token
 
 app_name = "auctions"
 
 urlpatterns = [
     path("admin/",admin.site.urls),
+    path("auth/",obtain_auth_token),
     path("register/",views.register_view, name="register"),
     path("", views.login_view  ,name="frontpage"),
     path("login/",views.login_view ,name="login"),
     path("items/",views.items_view,name="items"),
-    path("profile/",views.profile_view,name="profiles"),
+    path("profile/",views.profile_view,name="profile"),
     path("profile/<int:id>",views.profile_detail),
     path('items/<int:id>',views.item_detail),
     path("comments/",views.comment_view,name="comments"),

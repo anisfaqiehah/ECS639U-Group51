@@ -47,6 +47,7 @@
         <h2 class="editable-text text-secondary"> Current bid: $ {{ item.starting_bid}}</h2>
         <h4 class="editable-text text-secondary"> Auction finishes: {{ item.end_date }}</h4>
           <button type="button" class="btn btn-outline-success" @click.prevent="toggleEdit(item.id)" id="song-btn">Open</button>
+          <h4 class="editable-text text-secondary"> Auction posted by: {{ item.user }}</h4>
       
       </div>
       </div>

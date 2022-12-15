@@ -25,7 +25,7 @@ class User(AbstractUser):
 
 
 class Item(models.Model): 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="item_list")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="item_list" ,null=True,blank=True)
     title = models.CharField(max_length=64)
     picture=models.ImageField(null=True,blank=True)
     description = models.TextField(max_length=256, blank=True)
@@ -36,10 +36,11 @@ class Item(models.Model):
     end_date= models.DateTimeField(auto_now=False)
 
     def __str__(self):
-        return f"{self.title}, {self.description}"
+        return f"{self.title}"
     def to_dict(self):
             return {
                   'id': self.id,
+                  "user":self.user.username,
                   'title': self.title,
                   'description':self.description,
                   "starting_bid":self.starting_bid,
@@ -66,29 +67,15 @@ class Bid(models.Model):
     
 class ItemComment(models.Model):
     text = models.TextField(max_length=512, blank=False)
-    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="comments_list")
-
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="comments_list",null=True,blank=True)
+    
     def to_dict(self):
         return{
             "id":self.id,
+            "item":self.item.title,
             "text":self.text,        }
         pass
 
-
-
-class Watchlist(models.Model):
-    items = models.ForeignKey(Item, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='watchlist_list')
-
-    def __str__(self):
-        return f"{self.items}, {self.user}"
-
-class Category(models.Model):
-    name = models.CharField(max_length=24, blank=False)
-    items = models.ManyToManyField(Item, blank=True, related_name="categories")
-
-    def __str__(self):
-        return f"{self.name}"
 
 class AuctionHistory(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="history_user")

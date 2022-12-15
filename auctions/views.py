@@ -12,14 +12,15 @@ from django import forms
 import logging
 from django.db import models
 from django.http import HttpRequest, HttpResponse, JsonResponse
-from .models import User, Bid, Item, ItemComment, Watchlist, ItemCategory, AuctionHistory
+from .models import User, Bid, Item, ItemComment,  ItemCategory, AuctionHistory
 from .utils import utility
 import json 
-
+from rest_framework import viewsets
 from .forms import RegisterForm,LoginForm
 from django.contrib.auth.decorators import login_required
 from rest_framework.decorators import api_view
 from .serializer import ItemSerializer ,ProfileSerializer,CommentSerializer
+from rest_framework.authentication import TokenAuthentication
 
 def register_view(request):
     '''
@@ -132,12 +133,13 @@ def items_view(request:HttpRequest)-> HttpResponse:
 @api_view(['GET','POST'])
 def profile_view(request:HttpRequest)-> HttpResponse:
        if request.method=='GET':
+             
             return JsonResponse({
             'profiles': [
                 profile.to_dict()
                 for profile in User.objects.all()
-            ]
-        })
+            ]})
+            
       
        if request.method=='POST':
             serializer=ProfileSerializer(data=request.data)
@@ -145,6 +147,8 @@ def profile_view(request:HttpRequest)-> HttpResponse:
                   serializer.save()
                   return Response(serializer.data, status==status.HTTP_201_CREATED)
                   
+
+
 
 @api_view(['GET','PUT','DELETE'])
 def profile_detail(request,id):
@@ -197,6 +201,7 @@ def comment_view(request):
 @api_view(['GET','POST'])
 def comment_view(request):
       if request.method=='GET':
+            what_item=Item.objects.filter(title="phone").get()
             return JsonResponse({
             'comments': [
                 comment.to_dict()
