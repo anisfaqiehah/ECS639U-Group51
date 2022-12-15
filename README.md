@@ -27,8 +27,4 @@ npm install bootstrap
 npm install bootstrap-vue
 ```
 
-Then, add these to the ``` main.js ``` 
-```
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-```
+
