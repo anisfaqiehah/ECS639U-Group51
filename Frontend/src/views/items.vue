@@ -21,7 +21,7 @@
 
         <form>
           <div class="form-group m-3">
-        <input  type="text" value="{{item.title}}" name="item" ref="item">
+        <input  hidden type="text" value="{{item.title}}" name="item" ref="item">
          <input v-model="text" type="text" placeholder="Ask a question" class="form-control" style="width:70%" name="text" ref="text"/>
          <button type="button"   class="btn btn-success" style="width:20%" @click="postComment()">Ask
         </button>
@@ -30,7 +30,7 @@
            
         <button type="button" class="btn btn-success" @click.prevent="toggleEdit"  id="song-btn">Exit
         </button>
-       
+       <h4 class="editable-text text-secondary"> Auction posted by: {{ item.user }}</h4>
          
         </div>
        
