@@ -19,5 +19,16 @@ yarn add -D vue-router@4
 Install Bootstrap
 ```
 npm install bootstrap@5.2.3
+```
 
+or 
+```
+npm install bootstrap
+npm install bootstrap-vue
+```
+
+Then, add these to the ``` main.js ``` 
+```
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 ```
