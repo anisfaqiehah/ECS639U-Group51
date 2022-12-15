@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:5173"] 
+CORS_ALLOWED_ORIGINS = ["http://localhost:5173","http://localhost:8080","http://localhost:5174"] 
 
 ROOT_URLCONF = 'auctions.urls'
 
