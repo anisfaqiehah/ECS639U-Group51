@@ -30,16 +30,6 @@
   </div>
 
 
-<!-- <div>
-  <ul>
-      <router-link :to="{name:'Home'}">Home </router-link>
-      <router-link :to="{name:'Login'}"> Login/Register </router-link>
-      <router-link :to="{name:'Profile'}"> Profile </router-link>
-      <router-link :to="{name:'Bids'}"> Bids </router-link>
-      <router-link :to="{name:'Add'}"> Add </router-link>
-  <router-view/>
-</ul>
-</div> -->
 </template>
 
 
