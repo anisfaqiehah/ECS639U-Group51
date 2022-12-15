@@ -54,3 +54,20 @@ npm install bootstrap-vue
 ```
 
 
+```
+test users
+username : anis
+password : aniswebcw3
+
+username : anisfaqiehah
+password : aniswebcw3
+
+username : esther
+password : estherwebcw3
+
+username : esthersnchz
+password : estherwebcw3
+
+username : agnes
+password : agnesfwebcw3
+```
