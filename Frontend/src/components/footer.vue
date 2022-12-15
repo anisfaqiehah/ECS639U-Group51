@@ -1,5 +1,14 @@
 <template>
-        <footer class="bg-light text-center text-lg-start fixed-bottom">
+<div id="footer">
+    <div class="container text-center">
+
+        <p class="fixed-bottom">
             © 2022 Copyright: Group 51
-        </footer> 
+        </p> 
+    </div>
+</div>
 </template>
+
+export default {
+}
+</script>
