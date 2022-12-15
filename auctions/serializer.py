@@ -4,7 +4,7 @@ from .models import Item,User,ItemComment
 class ItemSerializer(serializers.ModelSerializer):
       class Meta:
             model=Item
-            fields=['id','title','description','description',"starting_bid","category","category","status","start_date","end_date"]
+            fields=['id','title','description',"starting_bid","category","status","start_date","end_date"]
 
 
 class ProfileSerializer(serializers.ModelSerializer):

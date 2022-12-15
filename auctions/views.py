@@ -123,12 +123,14 @@ def items_view(request:HttpRequest)-> HttpResponse:
                 for item in Item.objects.all()
             ]
         })
-      
+      """""
       if request.method=='POST':
             serializer=ItemSerializer(data=request.data)
             if serializer.is_valid():
                   serializer.save()
                   return Response(serializer.data, status==status.HTTP_201_CREATED)
+"""
+      
 
 @api_view(['GET','POST'])
 def profile_view(request:HttpRequest)-> HttpResponse:
@@ -200,20 +202,20 @@ def comment_view(request):
 
 @api_view(['GET','POST'])
 def comment_view(request):
+      itemName= Item.objects.filter(title="laptop").get()
       if request.method=='GET':
-            what_item=Item.objects.filter(title="phone").get()
+            what_item=Item.objects.filter(title=itemName).get()
             return JsonResponse({
             'comments': [
                 comment.to_dict()
-                for comment in ItemComment.objects.all()
+                for comment in ItemComment.objects.filter(item= what_item)
             ]
         })
     #Verify and recover the text
       if request.method == 'POST':
-            #Get important things: username, commented item title, and user making the comment
             item_name = request.POST.get('item')
             comment = str(request.POST.get('text'))
-            item_obj = Item.objects.filter(title=item_name).get()
+            item_obj = Item.objects.filter(title=item_name)
             #author = User.objects.filter(username = request.user.username).get()
             new_comment = ItemComment(text=comment,  item=item_obj)
             new_comment.save()    

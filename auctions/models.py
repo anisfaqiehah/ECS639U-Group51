@@ -25,7 +25,7 @@ class User(AbstractUser):
 
 
 class Item(models.Model): 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="item_list" ,null=True,blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="item_list" ,blank=True,default="")
     title = models.CharField(max_length=64)
     picture=models.ImageField(null=True,blank=True)
     description = models.TextField(max_length=256, blank=True)

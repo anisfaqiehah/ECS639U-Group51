@@ -23,7 +23,7 @@
           <div class="form-group m-3">
         <input  hidden type="text" value="{{item.title}}" name="item" ref="item">
          <input v-model="text" type="text" placeholder="Ask a question" class="form-control" style="width:70%" name="text" ref="text"/>
-         <button type="button"   class="btn btn-success" style="width:20%" @click="postComment()">Ask
+         <button type="button"   class="btn btn-success" style="width:20%" @click="postComment(item)">Ask
         </button>
         </div>
         </form>
@@ -76,13 +76,14 @@ export default {
       this.items=data.items
       console.log(this.items)
     },
-  async fetchComments(){
+  async fetchComments(item){
       //Perform ajax request to fetch profile info
       let response= await fetch("http://localhost:8000/comments/")
       let data= await response.json()
       this.comments=data.comments
       console.log(this.comments)
     },
+
      async postComment() {
       const postData = {
         text: this.$refs.text.value,
