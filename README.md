@@ -21,6 +21,7 @@ Before running in your computer install the following dependencies:
 ```
 pip install django-crispy-forms
 . auction/bin/activate 
+pip install django-cors-headers
 ```
 
 router installation
