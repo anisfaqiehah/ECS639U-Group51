@@ -9,3 +9,6 @@
 </div>
 </template>
 
+export default {
+}
+</script>
