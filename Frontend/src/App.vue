@@ -17,6 +17,9 @@
     <li class="nav-item">
       <a class="nav-link"><router-link :to="{name:'Bids'}"> Bids </router-link></a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link"><router-link :to="{name:'Add'}"> Add Item </router-link></a>
+    </li>
   </ul>
   </div>
 </nav>
@@ -30,6 +33,16 @@
   </div>
 
 
+<!-- <div>
+  <ul>
+      <router-link :to="{name:'Home'}">Home </router-link>
+      <router-link :to="{name:'Login'}"> Login/Register </router-link>
+      <router-link :to="{name:'Profile'}"> Profile </router-link>
+      <router-link :to="{name:'Bids'}"> Bids </router-link>
+      <router-link :to="{name:'Add'}"> Add </router-link>
+  <router-view/>
+</ul>
+</div> -->
 </template>
 
 
