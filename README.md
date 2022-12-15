@@ -24,6 +24,11 @@ pip install django-crispy-forms
 pip install django-cors-headers
 ```
 
+for Windows,
+```
+activate
+```
+
 
 activating vue/vite and running the server
 ``` 
