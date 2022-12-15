@@ -5,7 +5,7 @@
         <template v-if="editedFieldId === profile.id">
           <div class="card text-center border-success mb-4 " id="profile-card">
                
-          <form>
+          <form v-on:submit.prevent="submitForm">
             <h2 class="text-success m-3 ">Edit profile</h2>
             
             <div class="form-group m-3">
@@ -78,6 +78,7 @@
      data(){
            return{
                  editedFieldId: null,
+                 infos: [],
                  profiles:[{id:1, 
                   username:"esther001",
                   email:'example@email.com', 
@@ -91,26 +92,40 @@
      methods:{  
       async fetchInfo() {
         // Perform an Ajax request to fetch the info of a user
-        let response = await fetch("http://localhost:8000/api/profiles/")
+        let response = await fetch("http://localhost:8000/profile/")
         let data = await response.json()
         this.info = data.profiles
         },
-
-      toggleEdit(id) {
-        if (id) {
-          this.editedFieldId = id;
-          this.$nextTick(() => {
-            if (this.$refs["field" + id]) {
-              this.$refs["field" + id][0].focus();
-            }
-          });
-        } else {
-          this.editedFieldId = null;
-        }
-      },
-  
       
-  
+        async toggleEdit(info){
+          try{
+
+          // Send a request to API to update the info
+          const response = await this.$http.put(`http://localhost:8000/profile/${info.id}/`, {
+              email: info.title,
+              dob: info.dob,
+              pic: info.pic
+          });
+
+          // Get the index of the info being updated
+          let infoIndex = this.infos.findIndex(t => t.id === info.id);
+
+          // Reset the info array with the new data of the updated info
+
+          this.infos = this.infos.map((info) => {
+              if(this.infos.findIndex(t => t.id === info.id) === infoIndex){
+                  return response.data;
+              }
+              return info;
+          });
+
+          }catch(error){
+
+          // Log any error
+          console.log(error);
+          }
+          },
+
       
      }
   }
