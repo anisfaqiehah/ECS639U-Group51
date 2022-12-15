@@ -8,13 +8,15 @@ app_name = "auctions"
 
 urlpatterns = [
     path("admin/",admin.site.urls),
-    path("register/",views.register, name="register"),
-    path("", views.indexview ,name="index"),
-    path("login/",views.login ,name="login"),
+    path("register/",views.register_view, name="register"),
+    path("", views.login_view  ,name="frontpage"),
+    path("login/",views.login_view ,name="login"),
     path("items/",views.items_view,name="items"),
     path("profile/",views.profile_view,name="profiles"),
     path("profile/<int:id>",views.profile_detail),
     path('items/<int:id>',views.item_detail),
+    path("comments/",views.comment_view,name="comments"),
+    path("logout/",views.logoutView,name="logout"),
 ]
 
 urlpatterns=format_suffix_patterns(urlpatterns)

@@ -1,5 +1,5 @@
 from rest_framework  import serializers
-from .models import Item,User
+from .models import Item,User,ItemComment
 
 class ItemSerializer(serializers.ModelSerializer):
       class Meta:
@@ -11,4 +11,8 @@ class ProfileSerializer(serializers.ModelSerializer):
       class Meta:
             model=User
             fields=["id","username","email","city","dob","bio"]
-            
+
+class CommentSerializer(serializers.ModelSerializer):
+      class Meta:
+            model=ItemComment
+            fields=["id","text"]

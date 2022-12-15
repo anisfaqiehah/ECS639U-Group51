@@ -15,13 +15,13 @@ from django.http import HttpRequest, HttpResponse, JsonResponse
 from .models import User, Bid, Item, ItemComment, Watchlist, ItemCategory, AuctionHistory
 from .utils import utility
 import json 
-from django.core import serializers
+
 from .forms import RegisterForm,LoginForm
 from django.contrib.auth.decorators import login_required
 from rest_framework.decorators import api_view
-from .serializer import ItemSerializer ,ProfileSerializer
+from .serializer import ItemSerializer ,ProfileSerializer,CommentSerializer
 
-def register(request):
+def register_view(request):
     '''
     Signup function
     Users creating an account
@@ -70,13 +70,13 @@ def register(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('index.html')
+                return render(request, 'frontpage.html',{'page': 'frontpage'})
 
-    return render(request, 'register.html', {'form': RegisterForm})
+    return render(request, 'register.html', {'form': form})
 
 
 
-def login(request):
+def login_view(request):
     '''
     Login function
     Users logging into the app
@@ -90,7 +90,8 @@ def login(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('profile')
+                #return redirect('indexview')
+                return render(request, 'frontpage.html',{'page': 'frontpage'})
 
             # failed authentication
             form.add_error('username', 'Invalid credentials')
@@ -104,7 +105,12 @@ def login(request):
 
 def indexview(request):
 
-      return render(request, 'index.html',{'page': 'index'})
+      return render(request, 'base.html',{'page': 'frontpage'})
+
+
+def logoutView(request):
+      return redirect("frontpage")
+
 
 
 @api_view(['GET','POST'])
@@ -161,6 +167,7 @@ def profile_detail(request,id):
             profile.delete()
             return Response(status=status.HTTP_200_OK)
 
+
 @api_view(['GET','PUT','DELETE'])
 def item_detail(request,id):
 
@@ -182,3 +189,31 @@ def item_detail(request,id):
             item.delete()
             return Response(status=status.HTTP_200_OK)
             
+
+def comment_view(request):
+      pass
+
+
+@api_view(['GET','POST'])
+def comment_view(request):
+      if request.method=='GET':
+            return JsonResponse({
+            'comments': [
+                comment.to_dict()
+                for comment in ItemComment.objects.all()
+            ]
+        })
+    #Verify and recover the text
+      if request.method == 'POST':
+            #Get important things: username, commented item title, and user making the comment
+            item_name = request.POST.get('item')
+            comment = str(request.POST.get('text'))
+            item_obj = Item.objects.filter(title=item_name).get()
+            #author = User.objects.filter(username = request.user.username).get()
+            new_comment = ItemComment(text=comment,  item=item_obj)
+            new_comment.save()    
+      return Response(new_comment, status==status.HTTP_201_CREATED)
+
+   
+     
+    

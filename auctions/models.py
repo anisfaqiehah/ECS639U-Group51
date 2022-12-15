@@ -23,25 +23,6 @@ class User(AbstractUser):
                  
                   }
 
-"""""
-class UserProfile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_profile")
-    city=models.CharField(max_length=100)
-    dob=models.DateField(null=True,blank=True)
-    bio=models.TextField(blank=True)
-    image=models.ImageField(null=True,blank=True)
-
-    def __str__(self):
-            return f"{self.user}"
-    def to_dict(self):
-        return {
-              
-                  'city': self.city,
-                  'dob':self.dob,
-                  "bio":self.bio,
-                 
-                  }
-                  """
 
 class Item(models.Model): 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="item_list")
@@ -86,7 +67,14 @@ class Bid(models.Model):
 class ItemComment(models.Model):
     text = models.TextField(max_length=512, blank=False)
     item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name="comments_list")
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def to_dict(self):
+        return{
+            "id":self.id,
+            "text":self.text,        }
+        pass
+
+
 
 class Watchlist(models.Model):
     items = models.ForeignKey(Item, on_delete=models.CASCADE)
@@ -108,5 +96,3 @@ class AuctionHistory(models.Model):
 
     def __str__(self):
         return f"{self.user.first_name}, {self.items}"
-
-
