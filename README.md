@@ -24,6 +24,13 @@ pip install django-crispy-forms
 pip install django-cors-headers
 ```
 
+
+activating vue/vite and running the server
+``` 
+npm install
+npm run dev
+```
+
 router installation
 ``` 
 yarn add -D vue-router@4 
