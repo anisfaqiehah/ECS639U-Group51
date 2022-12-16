@@ -15,4 +15,4 @@ class ProfileSerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
       class Meta:
             model=ItemComment
-            fields=["id","text"]
+            fields=["id","text","item"]

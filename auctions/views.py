@@ -145,7 +145,6 @@ def profile_view(request:HttpRequest)-> HttpResponse:
       
 
 
-
 @api_view(['GET','PUT','DELETE'])
 def profile_detail(request,id):
 
@@ -210,20 +209,25 @@ def comment_view(request,id):
 @api_view(['POST'])
 def add_comment(request):
     #Verify and recover the text
-      if request.method == 'POST':
+    if request.method == 'POST':
+            postdata=request.data
+            item_name = postdata.item
+            comment = postdata.text
+       
+            item_obj = Item.objects.filter(title=item_name)
+            #author = User.objects.filter(username = request.user.username).get()
+            new_comment = ItemComment(text=comment,  item=item_obj)
+            new_comment.save()    
+            return Response(new_comment, status==status.HTTP_201_CREATED)
+    
+            """""
+              if request.method == 'POST':
             serializer=CommentSerializer(data=request.data)
             if serializer.is_valid():
                   serializer.save()
                   return Response(serializer.data, status==status.HTTP_201_CREATED)
 
-            """""
-            item_name = request.POST.get('item')
-            comment = str(request.POST.get('text'))
-            item_obj = Item.objects.filter(title=item_name)
-            #author = User.objects.filter(username = request.user.username).get()
-            new_comment = ItemComment(text=comment,  item=item_obj)
-            new_comment.save()    
-      return Response(new_comment, status==status.HTTP_201_CREATED)
+            
    """
      
     

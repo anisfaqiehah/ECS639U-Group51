@@ -15,16 +15,18 @@
         <h2 class="editable-text text-secondary"> Current bid $ {{ item.tarting_bid}}</h2>
         <h4 class="editable-text text-secondary"> Auction finishes {{ item.end_date }}</h4>
 
+<div>Comments</div>
         <div v-for="comment in comments" :key="comment.id" class="editable-field">
               <h3>{{comment.text}}</h3>
+              
           </div>
+
 
         <form >
           <div class="form-group m-3">
-        <input   type="text" value="{{item.title}}" name="item" ref="item">
-        <div>{{item.title}}</div>
+        <input  hidden type="text" value="{{item.title}}" name="item" ref="item">
          <input v-model="text" type="text" placeholder="Ask a question" class="form-control" style="width:70%" name="text" ref="text"/>
-         <button type="button"   class="btn btn-success" style="width:20%" @click="postComment()">Ask
+         <button type="button"   class="btn btn-success" style="width:20%" @click="postComment(item)">Ask
         </button>
         </div>
         </form>
@@ -86,8 +88,9 @@ export default {
       console.log(this.comments)
     },
 
-     async postComment() {
+     async postComment(item) {
       const postData = {
+        item:item.id,
         text: this.$refs.text.value, 
       };
         const res = await fetch("http://localhost:8000/addcomments/", {
