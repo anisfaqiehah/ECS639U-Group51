@@ -1,2 +1,4 @@
 @vue/vli 5.0.8
 bootstrap : 5.2.3
+Django 4.1
+Python 3.9
