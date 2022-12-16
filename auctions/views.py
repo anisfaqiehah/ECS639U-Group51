@@ -201,10 +201,11 @@ def comment_view(request):
 
 
 @api_view(['GET','POST'])
-def comment_view(request):
-      itemName= Item.objects.filter(title="laptop").get()
+def comment_view(request,id):
+      item= Item.objects.get(pk=id)
+      #itemName= Item.objects.filter(title="laptop").get()
       if request.method=='GET':
-            what_item=Item.objects.filter(title=itemName).get()
+            what_item=Item.objects.filter(title=item.title).get()
             return JsonResponse({
             'comments': [
                 comment.to_dict()

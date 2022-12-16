@@ -18,6 +18,7 @@ urlpatterns = [
     path("profile/<int:id>",views.profile_detail),
     path('items/<int:id>',views.item_detail),
     path("comments/",views.comment_view,name="comments"),
+    path("comments/<int:id>",views.comment_view,name="comments"),
     path("logout/",views.logoutView,name="logout"),
 ]
 

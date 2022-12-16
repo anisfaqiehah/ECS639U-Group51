@@ -46,7 +46,8 @@
         <h3 class="editable-text text-secondary"> {{ item.description }}</h3>
         <h2 class="editable-text text-secondary"> Current bid: $ {{ item.starting_bid}}</h2>
         <h4 class="editable-text text-secondary"> Auction finishes: {{ item.end_date }}</h4>
-          <button type="button" class="btn btn-outline-success" @click.prevent="toggleEdit(item.id)" id="song-btn">Open</button>
+          <button type="button" class="btn btn-outline-success" @click.prevent="toggleEdit(item.id)" id="song-btn" @click="fetchComments(item)"
+          >Open</button>
           <h4 class="editable-text text-secondary"> Auction posted by: {{ item.user }}</h4>
       
       </div>
@@ -78,13 +79,13 @@ export default {
     },
   async fetchComments(item){
       //Perform ajax request to fetch profile info
-      let response= await fetch("http://localhost:8000/comments/")
+      let response= await fetch("http://localhost:8000/comments/"+item.id)
       let data= await response.json()
       this.comments=data.comments
       console.log(this.comments)
     },
 
-     async postComment() {
+     async postComment(item) {
       const postData = {
         text: this.$refs.text.value,
         item: this.$refs.item.value,  
