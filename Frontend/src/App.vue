@@ -3,22 +3,22 @@
   <div id="wrapper">
     <nav class="navbar fixed-top navbar-dark bg-dark">
   <div class="container-fluid">
-    <h3>Group 51</h3>
+    <h3 class="link-light">Group 51</h3>
       <ul class="nav">
     <li class="nav-item">
-      <a class="nav-link active"><router-link :to="{name:'Home'}">Home</router-link></a>
+      <a class="nav-link active"><router-link :to="{name:'Home'}" class="text-decoration-none link-light">Home</router-link></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" ><router-link :to="{name:'Login'}"> Login/Register </router-link></a>
+      <a class="nav-link" ><router-link :to="{name:'Login'}" class="text-decoration-none link-light"> Login/Register </router-link></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link"><router-link :to="{name:'Profile'}"> Profile </router-link></a>
+      <a class="nav-link "><router-link :to="{name:'Profile'}" class="text-decoration-none link-light"> Profile </router-link></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link"><router-link :to="{name:'Bids'}"> Bids </router-link></a>
+      <a class="nav-link"><router-link :to="{name:'Bids'}" class="text-decoration-none link-light"> Bids </router-link></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link"><router-link :to="{name:'Add'}"> Add Item </router-link></a>
+      <a class="nav-link"><router-link :to="{name:'Add'}" class="text-decoration-none link-light"> Add Item </router-link></a>
     </li>
   </ul>
   </div>
@@ -46,10 +46,5 @@ export default {
 }
 </script>
 
-<style scoped>
-h3{
-  color: aliceblue;
-}
-</style>
 
 
