@@ -70,4 +70,8 @@ password : estherwebcw3
 
 username : agnes
 password : agnesfwebcw3
+
+superuser
+username : agnesstaff
+password : agnesstaff
 ```
