@@ -92,7 +92,7 @@ methods: {
 <style scoped>
 form{
   width:100%;
-  padding: 12px 20px;
+  padding: 12px 150px;
   margin: 8px 0;
   display: flex;
   display: inline-block;
@@ -104,7 +104,9 @@ form{
   margin-top: 2em;
   background-color: #f2f2f2;
 }
-
+input{
+  width: 100%;
+}
 button[type=submit] {
   /* width: 100%; */
   background-color:rgb(19, 19, 49);
