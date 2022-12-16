@@ -75,3 +75,7 @@ superuser
 username : agnesstaff
 password : agnesstaff
 ```
+```
+The link 
+https://group51-web-apps-<ec20244>.apps.d.comp-teach.qmul.ac.uk
+```
