@@ -2,7 +2,7 @@
  <div >
 
   <!-- search bar -->
-  <form @submit.prevent="search">
+  <form @submit.prevent="filteredList">
   <div class="search-wrapper col-md7">
     <label>Search title:</label><br>
     <input type="text" class="form-control" v-model="searchTerm" placeholder="Search title.."/>
@@ -81,13 +81,14 @@
     <li class="page-item">
       <a class="page-link" href="#">Next</a>
     </li>
-  </ul>
-</nav>
+    </ul>
+    </nav>
   </div>
   </div>
 </template>
 
 <script>
+
 export default {
    data(){
          return{
@@ -130,9 +131,13 @@ export default {
 
     async search() {
       let response = await fetch("http://localhost:8000/items/")
-      this.name = response.filter( (items) => item.title || item.description == this.searchTerm)
+      this.name = response.filter( (item) => item.title || item.description == this.searchTerm)
     },
-
+    filteredList() {
+      return this.items.filter(item => {
+        return item.title.toLowerCase().includes(this.search.toLowerCase())
+      })
+    },
     toggleEdit(id) {
       if (id) {
         this.editedFieldId = id;
