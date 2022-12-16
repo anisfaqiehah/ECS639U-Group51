@@ -89,3 +89,40 @@ methods: {
   }
 }
 </script>
+<style scoped>
+form{
+  width:100%;
+  padding: 12px 150px;
+  margin: 8px 0;
+  display: flex;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 40px;
+  border-style:inherit;
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: 2em;
+  background-color: #f2f2f2;
+}
+input{
+  width: 100%;
+}
+button[type=submit] {
+  /* width: 100%; */
+  background-color:rgb(19, 19, 49);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  }
+   
+button[type=submit]:hover {
+  background-color: blue;
+  }
+
+label{
+  margin: 1em;
+}
+</style>

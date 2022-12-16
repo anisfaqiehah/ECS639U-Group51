@@ -1,8 +1,9 @@
 <template>
 
-  <div >
+<div class="row row-cols-2 g-3">
     <div v-for="profile in profiles" :key="profile.id" class="editable-field">
       <template v-if="editedFieldId === profile.id">
+        <div class="col">
         <div class="card text-center border-success mb-4 " id="profile-card">
              
         <form>
@@ -32,9 +33,10 @@
         </form>
          
         </div>
-       
+      </div>
       </template>
       <template v-else>
+        <div class="col">
         <div class="card text-center border-success mb-4" id="profile-card">
                 <div class="row g-0">
                <h1>Profile information</h1>
@@ -64,6 +66,7 @@
 
         </div>
       </div>
+    </div>
       </template>
     </div>
     

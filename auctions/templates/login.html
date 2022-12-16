@@ -1,4 +1,13 @@
-
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hi, Log In Please</title>
+        <link href="{% static 'auctions/login.css' %}" rel="stylesheet">
+    </head>
+<div class="login">
 
 {%block title%}Log in {%endblock%}
 {% load crispy_forms_tags%}
@@ -8,10 +17,16 @@
       {{form|crispy}}
       <button type="submit" class="btn btn-success">Login</button>
 </form>
-<div class='card shadow mx-auto text-center m-4 p-4 bg-light' style="width:375px;">
+<div class='card shadow mx-auto text-center m-4 p-4 bg-light'>
       Don´t have an account? 
       <a class="btn btn-outline-primary mt-3" href="{% url 'register' %}">
           Register
       </a>
   </div>
 {%endblock%} 
+      
+{% block scripts %}
+{% endblock %}
+</div>
+</body>
+</html>
