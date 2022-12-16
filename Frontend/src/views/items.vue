@@ -81,7 +81,7 @@ export default {
       console.log(this.items)
     },
   async fetchComments(item){
-      //Perform ajax request to fetch profile info
+      
       let response= await fetch("http://localhost:8000/comments/"+item.id)
       let data= await response.json()
       this.comments=data.comments
@@ -90,10 +90,10 @@ export default {
 
      async postComment(item) {
       const postData = {
-        item:item.id,
-        text: this.$refs.text.value, 
+        text: "comment", 
+        item:item.title,
       };
-        const res = await fetch("http://localhost:8000/addcomments/", {
+        const res = await fetch("http://localhost:8000/addcomment/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -101,6 +101,7 @@ export default {
           body: JSON.stringify(postData),
         });
         const data = await res.json();
+        console.log(postData)
     },
 
     

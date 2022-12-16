@@ -66,8 +66,7 @@ def register_view(request):
             #new_profile=UserProfile.create(user=new_user,email=email,city=city)
            # new_profile.save()
             # authenticate user
-            # establishes a session, will add user object as attribute
-            # on request objects, for all subsequent requests until logout
+        
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
@@ -123,13 +122,13 @@ def items_view(request:HttpRequest)-> HttpResponse:
                 for item in Item.objects.all()
             ]
         })
-      """""
+      
       if request.method=='POST':
             serializer=ItemSerializer(data=request.data)
             if serializer.is_valid():
                   serializer.save()
                   return Response(serializer.data, status==status.HTTP_201_CREATED)
-"""
+
       
 
 @api_view(['GET'])
@@ -206,28 +205,21 @@ def comment_view(request,id):
             ]
         })
     
-@api_view(['POST'])
-def add_comment(request):
+@api_view(['GET','POST'])
+def add_comment(request:HttpRequest)-> HttpResponse:
+    
     #Verify and recover the text
-    if request.method == 'POST':
-            postdata=request.data
-            item_name = postdata.item
-            comment = postdata.text
+      if request.method == 'POST':
+            item_name = request.data.item
+            comment = request.data.text
        
-            item_obj = Item.objects.filter(title=item_name)
+            item_obj = Item.objects.filter(title=item_name).get()
             #author = User.objects.filter(username = request.user.username).get()
             new_comment = ItemComment(text=comment,  item=item_obj)
             new_comment.save()    
             return Response(new_comment, status==status.HTTP_201_CREATED)
-    
-            """""
-              if request.method == 'POST':
-            serializer=CommentSerializer(data=request.data)
-            if serializer.is_valid():
-                  serializer.save()
-                  return Response(serializer.data, status==status.HTTP_201_CREATED)
 
-            
-   """
+    
+
      
     

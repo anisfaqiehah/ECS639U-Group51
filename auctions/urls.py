@@ -19,7 +19,7 @@ urlpatterns = [
     path('items/<int:id>',views.item_detail),
     path("comments/",views.comment_view,name="comments"),
     path("comments/<int:id>",views.comment_view,name="comments"),
-    path("addcomments/",views.add_comment,name="addcomments"),
+    path("addcomment/",views.add_comment,name="addcomment"),
     path("logout/",views.logoutView,name="logout"),
 ]
 

@@ -72,8 +72,8 @@ class ItemComment(models.Model):
     def to_dict(self):
         return{
             "id":self.id,
-            "item":self.item.title,
-            "text":self.text,        }
+            "text":self.text, 
+            "item":self.item.title,       }
         pass
 
 
