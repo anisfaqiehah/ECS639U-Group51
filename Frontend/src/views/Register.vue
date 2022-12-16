@@ -1,20 +1,20 @@
 <template>
+    <div class="container">
     <h1>Register</h1>
-
-    <div class="in">
-        <label for="name">Username</label>
-        <div>
-            <input type="text" placeholder="Username"/>
-        </div>
-    </div>
-
-    <div class="in">
-        <label for="name">Password</label>
-        <div>
-            <input type="password" placeholder="8 characters maximum" required/>
-        </div>
-        <button type="submit" id="login_button">
-        Register
-      </button>
-    </div>
+    <form v-on:submit.prevent="submitForm">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div><br>
+  <button type="p-2 submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
 </template>
+
+<script>
+</script>
