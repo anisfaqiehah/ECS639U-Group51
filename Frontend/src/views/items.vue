@@ -1,5 +1,14 @@
 <template>
  <div >
+
+  <!-- search bar -->
+  <form @submit.prevent="search">
+  <div class="search-wrapper col-md7">
+    <label>Search title:</label><br>
+    <input type="text" class="form-control" v-model="searchTerm" placeholder="Search title.."/>
+ </div><br></form>
+
+
   <div class="row row-cols-2 g-3">
     <div v-for="item in items" :key="item.id" class="editable-field">
       <template v-if="editedFieldId === item.id">
@@ -85,6 +94,7 @@ export default {
               editedFieldId: null,
                items:[],
                comments:[],
+               searchTerm:'',
          }
    },
    methods:{  
@@ -117,7 +127,12 @@ export default {
         });
         const data = await res.json();
     },
-    
+
+    async search() {
+      let response = await fetch("http://localhost:8000/items/")
+      this.name = response.filter( (items) => item.title || item.description == this.searchTerm)
+    },
+
     toggleEdit(id) {
       if (id) {
         this.editedFieldId = id;
