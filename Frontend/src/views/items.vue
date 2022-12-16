@@ -5,7 +5,7 @@
   <form @submit.prevent="filteredList">
   <div class="search-wrapper col-md7">
     <label>Search item:</label><br>
-    <input type="text" class="form-control" v-model="searchTerm" placeholder="Search title.."/>
+    <input type="text" class="form-control" v-model="searchTerm" placeholder="Search item.."/>
  </div><br></form>
 
 
