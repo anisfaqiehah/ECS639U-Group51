@@ -19,11 +19,12 @@
               <h3>{{comment.text}}</h3>
           </div>
 
-        <form>
+        <form >
           <div class="form-group m-3">
-        <input  hidden type="text" value="{{item.title}}" name="item" ref="item">
+        <input   type="text" value="{{item.title}}" name="item" ref="item">
+        <div>{{item.title}}</div>
          <input v-model="text" type="text" placeholder="Ask a question" class="form-control" style="width:70%" name="text" ref="text"/>
-         <button type="button"   class="btn btn-success" style="width:20%" @click="postComment(item)">Ask
+         <button type="button"   class="btn btn-success" style="width:20%" @click="postComment()">Ask
         </button>
         </div>
         </form>
@@ -85,12 +86,11 @@ export default {
       console.log(this.comments)
     },
 
-     async postComment(item) {
+     async postComment() {
       const postData = {
-        text: this.$refs.text.value,
-        item: this.$refs.item.value,  
+        text: this.$refs.text.value, 
       };
-        const res = await fetch("http://localhost:8000/comments/", {
+        const res = await fetch("http://localhost:8000/addcomments/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -99,6 +99,8 @@ export default {
         });
         const data = await res.json();
     },
+
+    
     toggleEdit(id) {
       if (id) {
         this.editedFieldId = id;
@@ -115,7 +117,7 @@ export default {
        },
        beforeMount(){
             this.fetchItems()
-            this.fetchComments()
+           
               },
 }
 </script>

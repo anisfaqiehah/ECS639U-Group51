@@ -132,7 +132,7 @@ def items_view(request:HttpRequest)-> HttpResponse:
 """
       
 
-@api_view(['GET','POST'])
+@api_view(['GET'])
 def profile_view(request:HttpRequest)-> HttpResponse:
        if request.method=='GET':
              
@@ -143,12 +143,6 @@ def profile_view(request:HttpRequest)-> HttpResponse:
             ]})
             
       
-       if request.method=='POST':
-            serializer=ProfileSerializer(data=request.data)
-            if serializer.is_valid():
-                  serializer.save()
-                  return Response(serializer.data, status==status.HTTP_201_CREATED)
-                  
 
 
 
@@ -200,7 +194,7 @@ def comment_view(request):
       pass
 
 
-@api_view(['GET','POST'])
+@api_view(['GET'])
 def comment_view(request,id):
       item= Item.objects.get(pk=id)
       #itemName= Item.objects.filter(title="laptop").get()
@@ -212,8 +206,17 @@ def comment_view(request,id):
                 for comment in ItemComment.objects.filter(item= what_item)
             ]
         })
+    
+@api_view(['POST'])
+def add_comment(request):
     #Verify and recover the text
       if request.method == 'POST':
+            serializer=CommentSerializer(data=request.data)
+            if serializer.is_valid():
+                  serializer.save()
+                  return Response(serializer.data, status==status.HTTP_201_CREATED)
+
+            """""
             item_name = request.POST.get('item')
             comment = str(request.POST.get('text'))
             item_obj = Item.objects.filter(title=item_name)
@@ -221,7 +224,6 @@ def comment_view(request,id):
             new_comment = ItemComment(text=comment,  item=item_obj)
             new_comment.save()    
       return Response(new_comment, status==status.HTTP_201_CREATED)
-
-   
+   """
      
     
