@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Sknil</title>
+        <title>HELLO</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -15,13 +15,13 @@
     <body>
         <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="navbar-item" href="/"><b>Sknil</b></a>
+                <a class="navbar-item" href="admin/"><b>Admin</b></a>
             </div>
 
             <div class="navbar-menu">
                 {% if request.user.is_authenticated %}
                     <div class="navbar-start">
-                        <a  class="navbar-item">Categories</a>
+                        <a  class="navbar-item" href="admin/auctions/item/">Items</a>
                     </div>
                 {% else %}
                     <div class="navbar-start">
@@ -51,7 +51,7 @@
 
         <footer class="footer">
             <div class="content has-text-centered">
-                <p><strong>Sknil</strong> by Code With Stein</p>
+                <p><strong>WELCOME</strong> by Code Group51</p>
             </div>
         </footer>
 
