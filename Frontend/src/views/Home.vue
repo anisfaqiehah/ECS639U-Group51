@@ -1,4 +1,20 @@
 <template>
-    <h1>Home</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et aliquam urna, vel fermentum justo. Curabitur ac semper tellus. Aenean non eros faucibus, pretium massa vel, ultrices dui. Mauris sed mi porttitor, placerat lorem quis, rhoncus dolor. Maecenas consectetur, risus in malesuada dictum, urna urna luctus nisl, sodales pulvinar orci felis at magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed in odio lectus. Vivamus auctor eros non sapien cursus gravida. Aenean finibus lorem at nisi pretium euismod.</p>
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to our auction site!</h1>
+  <p class="lead">This is a simple web app created by Group 51. Feel free to roam around through the navbar on top.</p>
+  <hr class="my-4">
+  <p>Special thanks to : Esther, Agnes and Anis for making this happen. Have a great holiday!</p>
+
+    <div class="container">
+    <img src="@/assets/agnes.png" alt="agnes" class="rounded">
+    <img src="@/assets/esther.png" alt="esther" class="rounded">
+    <img src="@/assets/anis.png" alt="anis" class="rounded">
+    </div>
+</div>
 </template>
+
+<script>
+export default {
+  }
+</script>
+
